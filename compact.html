@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>compact</title>
+</head>
+<body>
+创建一个新数组并包含原数组中所有的非假值元素。例如 false、null、 0、""、undefined 和 NaN 都是“假值”。
+参数:
+array (Array): 数组参数.
+返回值:
+(Array): 返回过滤假值后的数组.
+例子
+_.compact([0, 1, false, 2, '', 3]);
+=>[1, 2, 3]
+
+<script type="text/javascript">
+	/*
+	 * 声明式编程
+	 * 通过filter函数，过滤数组中的假值
+	 * 
+	 */
+	function compact(array) {
+		if(Object.prototype.toString.call(array) != '[object Array]') throw new Error('参数不能为空，且必须为数组');
+        if (!array.length) return [];
+        return array.filter((e) => !!e)
+	}
+	var result = compact([1, 2, 3, 0, '', NaN, null, undefined, 4])
+	console.log(result);
+</script>
+<script type="text/javascript">
+	/*
+	 * 指令式编程
+	 * for of 循环判断是否为假值来过滤
+	 */
+	function compact(array) {
+	  	let resIndex = 0
+	  	const result = []
+
+	  	if (array == null) {
+	    	return result
+	  	}
+
+	  	for (const value of array) {
+	   		if (value) {
+	      		result[resIndex++] = value
+	    	}
+	  	}
+	  	return result
+	}
+</script>
+</body>
+</html>

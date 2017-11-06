@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dropWhile</title>
+</head>
+<body>
+从开头查询（左数起）数组 array ，第一个不满足predicate 条件的元素开始截取数组. thisArg为predicate 条件执行上下文对象绑定的参数 . 
+
+参数 predicate 提供的是一个属性名称，就通过提供的参数使用 _.property方法返回一个回调函数 
+
+如果参数thisArg提供的话，就使用 _.matchesProperty方法匹配相同的属性值，相同返回true,不同返回false 
+
+如果参数predicate提供的是一个对象，就使用 _.matches方法匹配相同的元素，相同返回true,不同返回false
+
+参数
+array (Array): 需要查询的数组
+[predicate=_.identity] (Function|Object|string): 数组遍历的条件
+[thisArg] (*): 对应 predicate 属性的值.
+返回值
+(Array): 返回截取元素后的数组
+<script type="text/javascript">
+	function dropWhile(array, ) {
+		// to do
+	}
+</script>
+</body>
+</html>

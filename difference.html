@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>defference</title>
+</head>
+<body>
+参数
+array (Array): 需要过滤的数组
+[values] (...Array): 数组需要排除掉的值
+返回值
+(Array): 返回过滤后的数组
+<script type="text/javascript">
+	function difference(array, value = []) {
+		//var result = [...new Set(array)];
+		if(Object.prototype.toString.call(array) != '[object Array]') throw new Error('参数不能为空，且必须为数组');
+        if (!array.length) return [];
+        let result = [];
+        outer:
+        for (let item of array) {
+        	for (let val of value) {
+        		if (item == val) {
+        			continue outer;
+        		}
+        	}
+        	result.push(item);
+        }
+        return result;
+
+	}
+	console.log(difference([2, 4, 3, 5]));
+</script>
+<script type="text/javascript">
+	
+</script>
+</body>
+</html>

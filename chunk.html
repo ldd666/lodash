@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>chunk</title>
+</head>
+
+<body>
+    <p>将 array 拆分成多个 size 长度的块，把这些块组成一个新数组。 如果 array 无法被分割成全部等长的块，那么最后剩余的元素将组成一个块。
+        <br> 参数:
+        <br> array (Array): 需要被处理的数组。
+        <br> [size=1] (number): 每个块的长度。
+        <br> 返回值:
+        <br> (Array): 返回一个包含拆分块数组的新数组（相当于一个二维数组）。
+    </p>
+<script type="text/javascript">
+/* 
+ * 时间复杂度o(n)
+ * 定义一个变量，来存储 何时创建数组
+ * 指令式编程
+ */
+function chunk(arr, size = 1) {
+    if (Object.prototype.toString.call(arr) !== '[object Array]') throw Error('参数必须为数组');
+    let isCreateEmptyArr = true,
+        result = [],
+        chunkArr;
+
+    for (let i = 0, len = arr.length; i < len; i++) {
+        if (isCreateEmptyArr) {
+            isCreateEmptyArr = false;
+            chunkArr = [];
+        }
+        if ((i + 1) % size === 0) {
+            chunkArr.push(arr[i]);
+            result.push(chunkArr);
+            isCreateEmptyArr = true;
+        } else {
+            chunkArr.push(arr[i]);
+        }
+    }
+    if (chunkArr.length) {
+        result.push(chunkArr);
+    }
+    return result;
+}
+var chunkArray = chunk();
+console.log(chunkArray);
+</script>
+
+<script type="text/javascript">
+	/*
+	 * new一个存放结果的数组，result
+	 * 通过slice,获取，第0，size的数
+	 * 声明式编程
+	 */ 
+	function chunk(array, size) { 
+		size = Math.max(size, 0)
+		const length = array == null ? 0 : array.length
+		if (!length || size < 1) { 
+			return [] 
+		} 
+		let index = 0
+		let resIndex = 0
+		const result = new Array(Math.ceil(length / size))
+		while (index < length) { 
+			result[resIndex++] = slice(array, index, (index += size)) 
+		}
+		return result 
+	}
+</script>
+</body>
+
+</html>

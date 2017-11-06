@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>drop</title>
+</head>
+<body>
+将 array 中的前 n 个元素去掉，然后返回剩余的部分。
+参数
+array (Array): 被操作的数组。
+[n=1] (number): 去掉的元素个数。
+返回值
+(Array): 返回 array 的剩余部分。
+<script type="text/javascript">
+	function drop(array, n = 1) {
+		/* 判断是否是类数组，类数组的概念？拥有length的object,将类数组转为数组的方法是：Array.prototype.slice.call(arraylike) */
+		let length = typeof array == 'object' && array.length && array.length > 0 ? array.length: 0;
+		let toArray = [].slice.call(array);
+		return toArray.slice(n > 0 ? n : 0, length)
+	}
+	console.log(drop([1, 2, 3, 4, 5], 2));
+	function dropRight(array, n = 1) {
+		let length = typeof array == 'object' && array.length && array.length > 0 ? array.length: 0;
+		let toArray = [].slice.call(array);
+		return toArray.slice(0, n < 0 ? 0 : -n)
+	}
+	console.log(dropRight([1, 2, 3, 4, 5], 2));
+</script>
+</body>
+</html>
